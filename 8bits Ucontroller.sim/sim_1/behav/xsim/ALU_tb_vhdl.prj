@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../8bits Ucontroller.srcs/sources_1/new/ALU.vhd" \
-"../../../../source/ALU_tb.vhd" \
-
-# Do not sort compile order
-nosort
