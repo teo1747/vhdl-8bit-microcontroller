@@ -112,12 +112,16 @@ end component Output_Ports;
  signal rom_out,ram_out:std_logic_vector(7 downto 0);  
  signal output_port_addr: std_logic_vector(3 downto 0);  
  signal ram_address,rom_address: std_logic_vector(6 downto 0); 
+ signal ram_write,port_write: std_logic;
  
 begin  
 
 
-    ram_address <= address(6 downto 0) when (address(7)= '1') else  
+    -- RAM only from 0x80 to 0xDF; output ports only from 0xE0 to 0xEF
+    ram_address <= address(6 downto 0) when (address >= x"80" and address < x"E0") else  
                                 "0000000";  
+    ram_write   <= write when (address >= x"80" and address < x"E0") else '0';
+    port_write  <= write when (address(7 downto 4) = x"E") else '0';
     rom_address <= address(6 downto 0) when (address(7)='0') else  
                                 "0000000";  
     output_port_addr <= address(3 downto 0) when (address(7 downto 4)= x"E") else  
@@ -135,7 +139,7 @@ begin
                      (  
                           address  => ram_address,  
                           data_in  => data_in,  
-                          write    => write,  
+                          write    => ram_write,  
                           clock    => clock,  
                           data_out => ram_out  
                      );  
@@ -144,7 +148,7 @@ begin
                      (  
                           address  => output_port_addr,  
                           data_in  => data_in,  
-                          write    => write,  
+                          write    => port_write,  
                           clock    => clock,  
                           reset    => reset,  
                           port_out_00 => port_out_00,  
