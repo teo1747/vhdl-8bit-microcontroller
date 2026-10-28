@@ -56,9 +56,9 @@ process(ALU_Sel,A,B)
            when "011" => -- OR  
                 ALU_Result <= A or B;            
            when "100" => -- Increment  
-                ALU_Result <= A + x"01";                 
+                ALU_Result <= B + x"01";                 
            when "101" => -- Decrement  
-                ALU_Result <= A - x"01";       
+                ALU_Result <= B - x"01";       
            when others =>  
                 ALU_Result <= A + B;  
       end case;  

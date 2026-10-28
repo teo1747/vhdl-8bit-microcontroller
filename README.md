@@ -57,8 +57,6 @@ flowchart LR
 | 0x20 | `BRA addr` | branch always |
 | 0x21–0x28 | `BMI`, `BPL`, `BEQ`, `BNE`, `BVS`, `BVC`, `BCS`, `BCC` | branch if N = 1, N = 0, Z = 1, Z = 0, V = 1, V = 0, C = 1, C = 0 |
 
-Known issue: `INCA` and `DECA` load A with B + 1 and B − 1. The ALU increments and decrements its `A` input, which `data_path.vhd` connects to register B; `INCB` and `DECB` are right.
-
 ## Test program
 
 The ROM runs every kind of instruction, then loops:
