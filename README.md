@@ -36,7 +36,7 @@ flowchart LR
 | [Output_Ports.vhd](source/Output_Ports.vhd) | The 16 output port registers |
 | [ALU_tb.vhd](source/ALU_tb.vhd), [tb_memory.vhd](source/tb_memory.vhd), [tb_microcontroller.vhd](source/tb_microcontroller.vhd) | Testbenches |
 
-[rom_128x8_Async.vhd](source/rom_128x8_Async.vhd), an asynchronous version of the ROM, and [8Bitmicrocontroller.vhd](source/8Bitmicrocontroller.vhd), an empty placeholder, are not part of the Vivado project.
+[rom_128x8_Async.vhd](source/rom_128x8_Async.vhd), an asynchronous version of the ROM, is not part of the Vivado project.
 
 ## Instruction set
 
